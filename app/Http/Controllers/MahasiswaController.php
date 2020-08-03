@@ -25,7 +25,7 @@ class MahasiswaController extends Controller
                 -> addIndexColumn()
                 -> addColumn('action', function ($mhs) {
                     $action = '<a class="text-primary" href="/mhs/edit/'.$mhs->nim.'">Edit</a>';
-                    $action = '<a class="text-danger" href=/mhs/delete'.$mhs->nim.'">Hapus</a>';
+                    $action = ' | <a class="text-danger" href=/mhs/delete'.$mhs->nim.'">Hapus</a>';
                     return $action;
                 })
                 ->make();
