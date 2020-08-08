@@ -25,7 +25,7 @@ class ProdiController extends Controller
      */
     public function create()
     {
-        //
+        return view('prodi.create');
     }
 
     /**
@@ -36,7 +36,13 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode_prodi' => 'required',
+            'nama_prodi' => 'required',
+        ]);
+        Prodi::create($request->all());
+        return redirect()->route('prodi.index')
+            ->with ('succes','Data berhasil ditambahkan');
     }
 
     /**
@@ -56,9 +62,10 @@ class ProdiController extends Controller
      * @param  \App\Prodi  $prodi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Prodi $prodi)
+    public function edit(Prodi $prodi, $kode_prodi)
     {
-        //
+        $prodi = Prodi::find($kode_prodi);
+        return view('prodi.edit',compact('prodi'));
     }
 
     /**
@@ -70,7 +77,12 @@ class ProdiController extends Controller
      */
     public function update(Request $request, Prodi $prodi)
     {
-        //
+        $request->validate([
+            'nama_prodi' => 'required'
+        ]);
+        $prodi->update($request->all());
+        return redirect()->route('prodi.index')
+                        ->with('success','Data berhasil diupdate');
     }
 
     /**
@@ -81,6 +93,8 @@ class ProdiController extends Controller
      */
     public function destroy(Prodi $prodi)
     {
-        //
+        $prodi->delete();
+         return redirect()->route('prodi.index')
+        ->with('success','Data Berhasil Dihapus');
     }
 }

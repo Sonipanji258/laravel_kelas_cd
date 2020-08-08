@@ -32,8 +32,7 @@
                 { data: 'nama_lengkap', name: 'nama_lengkap' },
                 { data: 'mprodi.nama_prodi', name: 'nama_prodi' },
                 { data: 'alamat', name: 'alamat' },
-                { data: 'action', name: 'action', orderable: false,
-searchable: false }
+                { data: 'action', name: 'action', orderable: false, searchable: false }
             ]          
         });
     });
