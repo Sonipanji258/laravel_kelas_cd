@@ -11,7 +11,7 @@
     @csrf
 
     <div class="form-group row">
-        <label for="kode_prodi" class="col-sm-12">Kode_Prodi</label>
+        <label for="kode_prodi" class="col-sm-12">Kode Prodi</label>
         <div class="col-sm-3">
             <input type="text" name="kode_prodi" class="form-control" id="kode_prodi" placeholder="Kode Prodi">
             @error('nim')<small id="kode_prodi" class="form-text text-danger">{{ $message }}</small>@enderror

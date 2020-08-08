@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Prodi;
+use App\Mahasiswa;
+use DataTables;
 use Illuminate\Http\Request;
 
 class ProdiController extends Controller
@@ -14,8 +16,19 @@ class ProdiController extends Controller
      */
     public function index()
     {
-        $list_prodi = Prodi::all();
-        return view('prodi.index', compact('list_prodi'));
+        return view('prodi.index');
+    }
+    public function prodi_list()
+    {
+        $prodi = Prodi::all();
+        return Datatables::of($prodi)
+            ->addIndexColumn()
+            ->addColumn('action', function ($prodi) {
+                $action = '<a class="text-primary" href="/prodi/edit/'.$prodi->kode_prodi.'">Edit</a>';
+                $action .= ' | <a class="text-danger" href="/prodi/delete/'.$prodi->kode_prodi.'">Hapus</a>';
+                return $action;
+            })
+            ->make(true);
     }
 
     /**

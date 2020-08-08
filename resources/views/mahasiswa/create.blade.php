@@ -19,7 +19,6 @@
      <div class="col-sm-5">
         <input type="text" name="nama_lengkap" class="form-control"id="nama_lengkap" placeholder="Masukan nama dengan benar">
         @error('nama_lengkap')<small id="nama_lengkap" class="form-text text-danger">{{ $message }}</small>@enderror
-
       </div>
     </div>
     <div class="form-group row">
