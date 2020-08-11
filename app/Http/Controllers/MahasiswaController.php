@@ -77,8 +77,9 @@ class MahasiswaController extends Controller
      */
     public function edit(Mahasiswa $mahasiswa, $nim)
     {
-        $prodi = Prodi::find($id);
-        return view ('prodi.edit', compact('prodi'));
+        $prodi = Prodi::all();
+        $mhs = Mahasiswa::find($nim);
+        return view('mahasiswa.edit', compact('prodi', 'mhs'));
     }
 
     /**
@@ -91,13 +92,12 @@ class MahasiswaController extends Controller
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
         $request->validate([
-            'nama_prodi' => 'required',
-        ]);
+            'nama_lengkap' => 'required',
+            ]);
 
-        $prodi->update($request->all());
-
-        return redirect()->route('prodi.index')
-                        ->with('success', 'Data berhasil diupdate');
+            $mahasiswa->update($request->all());
+            return redirect()->route('mhs.index')
+            ->with('success','Data berhasil diupdate');
     }
 
     /**
